@@ -153,8 +153,6 @@ public class Matrix {
                 row.setValueAt(i, random.nextInt());
             }
         }
-        
-        System.out.println(this);
     }
     
     /**

@@ -114,7 +114,7 @@ public class MatrixMultiplicationController {
         System.out.println("You need to enter values contained in the rows of the first matrix. "
                 + "Each row should contain " + firstMatrix.getNumberOfColumns()
                 + " values. The values should be typed in one line and"
-                + "separated with a whitespace character. You need to enter "
+                + " separated with a whitespace character. You need to enter "
                 + firstMatrix.getNumberOfRows() + " rows to continue");
 
         int enteredRowIndex = 0;
@@ -182,7 +182,6 @@ public class MatrixMultiplicationController {
                     } catch (NumberFormatException ex) {
                         System.out.println("You should've typed integer numbers. Please "
                                 + "try again");
-                        System.out.println(rowValuesAsString[index]);
                         break;
                     }
                 }
@@ -213,7 +212,7 @@ public class MatrixMultiplicationController {
             System.out.println(firstMatrix);
             System.out.println("The second matrix is:\n");
             System.out.println(secondMatrix);
-            System.out.println("The result of multuplication of these matrices:\n");
+            System.out.println("The result of multiplication of these matrices:\n");
             System.out.println(resultMatrix);
         } else {
             System.out.println("The number of columns in the first matrix should be "
