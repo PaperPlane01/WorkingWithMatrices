@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entities;
+package app;
 
+import entities.Matrix;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -14,20 +15,21 @@ import java.util.regex.Pattern;
  *
  * @author Администратор
  */
-public class MatrixController {
+public class MatrixMultiplicationController {
 
     private Matrix firstMatrix;
+    private boolean firstMatrixInitialized;
     private Matrix secondMatrix;
+    private boolean secondMatrixInitialized;
     private Matrix resultMatrix;
 
-    public MatrixController() {
+    public MatrixMultiplicationController() {
 
     }
 
     public void start() {
         initMatrices();
         fillMatrices();
-        System.out.println(firstMatrix);
         multiplyMatrices();
     }
 
@@ -37,6 +39,7 @@ public class MatrixController {
     }
 
     private void initFirstMatrix() {
+        firstMatrixInitialized = false;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of rows in the first matrix:");
         try {
@@ -45,17 +48,19 @@ public class MatrixController {
             try {
                 Integer numberOfColumnsInFirstMatrix = Integer.parseInt(scanner.nextLine());
                 firstMatrix = new Matrix(numberOfRowsInFirstMatrix, numberOfColumnsInFirstMatrix);
+                firstMatrixInitialized = true;
             } catch (NumberFormatException ex) {
                 System.out.println("You should enter an integer number.");
-                ex.printStackTrace();
+                initFirstMatrix();
             }
         } catch (NumberFormatException ex) {
             System.out.println("You should enter an integer number.");
-            ex.printStackTrace();
+            initFirstMatrix();
         }
     }
 
     private void initSecondMatrix() {
+        secondMatrixInitialized = false;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of rows in the second matrix:");
         try {
@@ -64,13 +69,14 @@ public class MatrixController {
             try {
                 Integer numberOfColumnsInSecondMatrix = Integer.parseInt(scanner.nextLine());
                 secondMatrix = new Matrix(numberOfRowsInSecondMatrix, numberOfColumnsInSecondMatrix);
+                secondMatrixInitialized = true;
             } catch (NumberFormatException ex) {
                 System.out.println("You should enter an integer number.");
-                ex.printStackTrace();
+                initSecondMatrix();
             }
         } catch (NumberFormatException ex) {
             System.out.println("You should enter an integer number.");
-            ex.printStackTrace();
+            initSecondMatrix();
         }
     }
 
@@ -95,8 +101,10 @@ public class MatrixController {
                 fillFirstMatrixManually();
                 fillSecondMatrixManually();
                 break;
-            default: 
+            default:
                 System.out.println("You should type Y or N");
+                fillMatrices();
+                break;
         }
     }
 

@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package workingwithmatrix;
+package app;
 
-import entities.MatrixController;
 import entities.Matrix;
 
 /**
@@ -19,7 +18,7 @@ public class Runner {
      */
     public static void main(String[] args) {
 
-       MatrixController controller = new MatrixController();
+       MatrixMultiplicationController controller = new MatrixMultiplicationController();
        controller.start();
        
     }
