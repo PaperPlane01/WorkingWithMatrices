@@ -56,7 +56,7 @@ public class MatrixMultiplicationController {
     }
     
     private void showResult() {
-        view.showMessage("The first matrix is:");
+        view.showMessage("\nThe first matrix is:");
         firstMatrixView.printModel();
         view.showMessage("The second matrix is:");
         secondMatrixView.printModel();

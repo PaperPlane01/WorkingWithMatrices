@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package views;
 
 import controllers.MatrixInputController;
 import java.util.Scanner;
 
-/**
- *
- * @author Администратор
- */
 public class MatrixInputView {
     
     private String data;
@@ -35,7 +27,7 @@ public class MatrixInputView {
     
     public void shouldMatrixBeFilledManually() {
         Scanner scanner = new Scanner(System.in);
-        showMessage("Do you want to fill matrix manually?");
+        showMessage("Do you want to fill matrix manually? Y/N");
         data = scanner.nextLine();
     }
     
