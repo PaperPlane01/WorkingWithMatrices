@@ -39,14 +39,14 @@ public class MatrixInputController {
         initMatrix();
     }
 
-    public void initMatrix() {
+    private void initMatrix() {
         initNumberOfRows();
         initNumberOfColumns();
         matrixModel = new Matrix(numberOfRows, numberOfColumns);
-        initRows();
+        fillRows();
     }
 
-    public void initNumberOfRows() {
+    private void initNumberOfRows() {
 
         view.enterNumberOfRows();
         numberOfRows = new Integer(0);
@@ -59,7 +59,7 @@ public class MatrixInputController {
         }
     }
 
-    public void initNumberOfColumns() {
+    private void initNumberOfColumns() {
 
         view.enterNumberOfColumns();
         numberOfColumns = new Integer(0);
@@ -72,16 +72,16 @@ public class MatrixInputController {
         }
     }
     
-    public void initRows() {
+    private void fillRows() {
         view.shouldMatrixBeFilledManually();
         String answer = view.receiveData();
         
         switch (answer) {
             case "Y":
-                initRowsManually();
+                fillRowsManually();
                 break;
             case "y":
-                initRowsManually();
+                fillRowsManually();
                 break;
             case "N":
                 matrixModel = MatrixFactory.generateMatrixFilledWithRandomNumbers(numberOfRows, numberOfColumns);
@@ -91,12 +91,12 @@ public class MatrixInputController {
                 break;
             default:
                 view.showMessage("You should type Y or N.");
-                initRows();
+                fillRows();
                 break;
         }
     }
     
-    public void initRowsManually() {
+    private void fillRowsManually() {
          view.showMessage("You need to enter the rows of the matrix."
                 + " Each row should conain " + matrixModel.getNumberOfColumns()
                 + " values and be typed as one line of integer"
@@ -113,7 +113,7 @@ public class MatrixInputController {
         }
     } 
 
-    public void validateRow(int rowIndex) {
+    private void validateRow(int rowIndex) {
 
         rowSuccessfullyValidated = false;
         
@@ -149,7 +149,7 @@ public class MatrixInputController {
             }
         } else {
             view.showMessage("You should've typed integer numbers."
-                        + " Please try again.1131");
+                        + " Please try again.");
             validateRow(rowIndex);
         }
     }

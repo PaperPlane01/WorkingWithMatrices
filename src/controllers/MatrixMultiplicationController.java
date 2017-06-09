@@ -15,7 +15,6 @@ public class MatrixMultiplicationController {
     private Matrix resultMatrix;
     private MatrixView resultMatrixView;
     private MatricesMultiplicationView view;
-    private boolean invalidMatrices;
 
     public MatrixMultiplicationController(Matrix firsMatrix, Matrix secondMatrix) {
         this.firstMatrix = firsMatrix;
@@ -41,7 +40,7 @@ public class MatrixMultiplicationController {
         }
     }
 
-    public boolean areMatricesInvalid() {
+    private boolean areMatricesInvalid() {
         if (firstMatrix.getNumberOfColumns() != secondMatrix.getNumberOfRows()) {
             return true;
         } else {
@@ -56,11 +55,11 @@ public class MatrixMultiplicationController {
     }
     
     private void showResult() {
-        view.showMessage("\nThe first matrix is:");
+        view.showMessage("The first matrix is:");
         firstMatrixView.printModel();
         view.showMessage("The second matrix is:");
         secondMatrixView.printModel();
-        view.showMessage("\nThe result of multuplication is:");
+        view.showMessage("The result of multuplication is:");
         resultMatrixView.printModel();
     }
     

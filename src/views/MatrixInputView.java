@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class MatrixInputView {
     
     private String data;
-    private MatrixInputController controller;
     
     public MatrixInputView() {
         
