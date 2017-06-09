@@ -218,7 +218,8 @@ public class MatrixMultiplicationController {
             System.out.println("The number of columns in the first matrix should be "
                     + "equal to the number of rows in the second matrix. Please try to re-enter "
                     + "matrices:\n");
-            fillMatrices();
+            System.out.println("You need to fill matrices once more:\n");
+            start();
         }
     }
 }
