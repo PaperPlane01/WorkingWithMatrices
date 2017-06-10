@@ -137,11 +137,11 @@ public class MatrixInputController {
                 validateRow(rowIndex);
             }
 
-            if (rowValues.length < matrixModel.getNumberOfColumns()) {
+            if (rowValues.length != matrixModel.getNumberOfColumns()) {
                 view.showMessage("Looks like you've entered more or less values"
                         + " than required. The row should contain"
                         + " exactly " + matrixModel.getNumberOfColumns() + " values."
-                        + " Please try again");
+                        + " Please try again.");
                 validateRow(rowIndex);
             } else {
                 matrixModel.setRow(rowIndex, rowValues);

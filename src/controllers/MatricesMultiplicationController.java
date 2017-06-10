@@ -1,12 +1,14 @@
 
 package controllers;
 
+import app.Runner;
 import models.Matrix;
+import models.MatrixActions;
 import views.MatricesMultiplicationView;
 import views.MatrixView;
 
 
-public class MatrixMultiplicationController {
+public class MatricesMultiplicationController {
 
     private Matrix firstMatrix;
     private MatrixView firstMatrixView;
@@ -16,7 +18,7 @@ public class MatrixMultiplicationController {
     private MatrixView resultMatrixView;
     private MatricesMultiplicationView view;
 
-    public MatrixMultiplicationController(Matrix firsMatrix, Matrix secondMatrix) {
+    public MatricesMultiplicationController(Matrix firsMatrix, Matrix secondMatrix) {
         this.firstMatrix = firsMatrix;
         this.firstMatrixView = new MatrixView(firsMatrix);
 
@@ -33,8 +35,7 @@ public class MatrixMultiplicationController {
             view.showMessage("The number of columns in the first matrix should be"
                     + " equal to the number of rows in the second matrix. Please try to re-enter"
                     + " matrices:\n");
-            MatrixInputController matrixInput = new MatrixInputController();
-            matrixInput.execute();
+            Runner.start();
         } else {
             multiplyMatrices();
         }
@@ -49,7 +50,7 @@ public class MatrixMultiplicationController {
     }
 
     private void multiplyMatrices() {
-        resultMatrix = Matrix.multiply(firstMatrix, secondMatrix);
+        resultMatrix = MatrixActions.multiply(firstMatrix, secondMatrix);
         updateMatrixViews();
         showResult();
     }
@@ -59,7 +60,7 @@ public class MatrixMultiplicationController {
         firstMatrixView.printModel();
         view.showMessage("The second matrix is:");
         secondMatrixView.printModel();
-        view.showMessage("The result of multuplication is:");
+        view.showMessage("The result of multiplication is:");
         resultMatrixView.printModel();
     }
     

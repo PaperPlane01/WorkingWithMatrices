@@ -7,8 +7,17 @@ import java.util.Random;
 
 public class Matrix {
     
+    /**
+     * Rows of the matrix.
+     */
     private ArrayList<Row> rows;
+    /**
+     * Number of rows contained in matrix.
+     */
     private int numberOfRows;
+    /**
+     * Number of columns contained in matrix.
+     */
     private int numberOfColumns;
 
     public Matrix() {
@@ -68,7 +77,7 @@ public class Matrix {
      */
     public void addRow(Integer[] rowAsArray) {
         rows.add(new Row(rowAsArray));
-        numberOfRows += 1;
+        numberOfRows = rows.size();
     }
     
     /**
@@ -110,29 +119,7 @@ public class Matrix {
      */
     public void setNumberOfColumns(int numberOfColumns) {
         this.numberOfColumns = numberOfColumns;
-    }
-    
-    /**
-     * Allows to multiply two matrices.
-     * @param firstMatrix The first matrix.
-     * @param secondMatrix The second matrix.
-     * @return Result of multiplication.
-     */
-    public static Matrix multiply(Matrix firstMatrix, Matrix secondMatrix) {
-        Matrix resultMatrix = new Matrix(firstMatrix.getNumberOfRows(), 
-                secondMatrix.getNumberOfColumns());
-        for (int rowNumber = 0; rowNumber < resultMatrix.getNumberOfRows(); rowNumber++) {
-            for (int columnNumber = 0; columnNumber < resultMatrix.getNumberOfColumns(); columnNumber++) {
-                Integer value = 0;
-                for (int iter = 0; iter < firstMatrix.getNumberOfColumns(); iter ++) {
-                    value += firstMatrix.getValueAt(rowNumber, iter) * secondMatrix.getValueAt(iter, columnNumber);
-                }
-                resultMatrix.setValueAt(rowNumber, columnNumber, value);
-            }
-        }
-        
-        return resultMatrix;
-    }
+    }   
     
     /**
      * Allows to fill the matrix with random numbers.
@@ -146,19 +133,6 @@ public class Matrix {
             }
         }
     }
-    
-    /**
-     * Creates a matrix filled with random numbers.
-     * @param numberOfRows Number of rows.
-     * @param numberOfColumns Number of columns.
-     * @return Matrix filled with random numbers.
-     */
-    public static Matrix generateMatrixFilledWithRandomNumbers(int numberOfRows,
-            int numberOfColumns) {
-        Matrix result = new Matrix(numberOfRows, numberOfColumns);
-        result.fillWithRandomNumbers();
-        return result;
-    }
 
     /**
      * Allows to get string representation of matrix.
@@ -168,7 +142,7 @@ public class Matrix {
     public String toString() {
         StringBuilder result = new StringBuilder();
         
-        for(Row row : rows) {
+        for (Row row : rows) {
             for (int index = 0; index < row.getSize(); index++) {
                 result.append(row.getValueAt(index));
                 result.append(" ");
@@ -220,22 +194,46 @@ public class Matrix {
             return this.values;
         }
         
+        /**
+         * Sets new values to the row.
+         * @param values New values which are to be set.
+         */
         private void setValues(ArrayList<Integer> values) {
             this.values = values;
+            size = values.size();
         }
         
+        /**
+         * Sets new values to the row.
+         * @param valuesAsArray New values which are to be set (represented as array)
+         */
         private void setValues(Integer[] valuesAsArray) {
             this.values = new ArrayList(Arrays.asList(valuesAsArray));
+            size = valuesAsArray.length;
         }
         
+        /**
+         * Returns value located at the specific index.
+         * @param index Index of the value.
+         * @return Value located at the specific index.
+         */
         private Integer getValueAt(int index) {
             return values.get(index);
         }
         
+        /**
+         * Allows to set new value located at the specific index. 
+         * @param index Index of the value.
+         * @param value New value which is to be set.
+         */
         private void setValueAt(int index, Integer value) {
             values.set(index, value);
         }
         
+        /**
+         * Allows to know the size of the row. 
+         * @return Size of the row.
+         */
         private int getSize() {
             return this.size;
         }
