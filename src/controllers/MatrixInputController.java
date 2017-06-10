@@ -100,7 +100,7 @@ public class MatrixInputController {
          view.showMessage("You need to enter the rows of the matrix."
                 + " Each row should conain " + matrixModel.getNumberOfColumns()
                 + " values and be typed as one line of integer"
-                + " numbers separated with a whitespace character");
+                + " numbers separated with a whitespace character.");
         view.showMessage("You should enter " + matrixModel.getNumberOfRows()
                 + " rows.");
         
