@@ -1,8 +1,7 @@
 
 package app;
 
-import controllers.MatrixInputController;
-import controllers.MatricesMultiplicationController;
+import controllers.ControllersManager;
 
 
 public class Runner {
@@ -14,16 +13,8 @@ public class Runner {
     }
     
     public static void start() {
-        MatrixInputController firstMatrixInput = new MatrixInputController();
-       firstMatrixInput.execute();
-       
-       MatrixInputController secondMatrixInput = new MatrixInputController();
-       secondMatrixInput.execute();
-       
-       MatricesMultiplicationController multiplicationController = 
-               new MatricesMultiplicationController(firstMatrixInput.getMatrixModel(), 
-               secondMatrixInput.getMatrixModel());
-       multiplicationController.execute();
+        ControllersManager manager = new ControllersManager();
+        manager.execute();
     }
 
 }

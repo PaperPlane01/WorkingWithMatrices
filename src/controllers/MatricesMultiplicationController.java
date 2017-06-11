@@ -1,4 +1,3 @@
-
 package controllers;
 
 import app.Runner;
@@ -6,7 +5,6 @@ import models.Matrix;
 import models.MatrixActions;
 import views.MatricesMultiplicationView;
 import views.MatrixView;
-
 
 public class MatricesMultiplicationController {
 
@@ -17,6 +15,7 @@ public class MatricesMultiplicationController {
     private Matrix resultMatrix;
     private MatrixView resultMatrixView;
     private MatricesMultiplicationView view;
+    private ControllersManager manager;
 
     public MatricesMultiplicationController(Matrix firsMatrix, Matrix secondMatrix) {
         this.firstMatrix = firsMatrix;
@@ -24,7 +23,7 @@ public class MatricesMultiplicationController {
 
         this.secondMatrix = secondMatrix;
         this.secondMatrixView = new MatrixView(secondMatrix);
-        
+
         this.resultMatrixView = new MatrixView();
 
         this.view = new MatricesMultiplicationView();
@@ -35,7 +34,11 @@ public class MatricesMultiplicationController {
             view.showMessage("The number of columns in the first matrix should be"
                     + " equal to the number of rows in the second matrix. Please try to re-enter"
                     + " matrices:\n");
-            Runner.start();
+            if (manager != null) {
+                manager.execute();
+            } else {
+                Runner.start();
+            }
         } else {
             multiplyMatrices();
         }
@@ -54,7 +57,7 @@ public class MatricesMultiplicationController {
         updateMatrixViews();
         showResult();
     }
-    
+
     private void showResult() {
         view.showMessage("The first matrix is:");
         firstMatrixView.printModel();
@@ -63,10 +66,14 @@ public class MatricesMultiplicationController {
         view.showMessage("The result of multiplication is:");
         resultMatrixView.printModel();
     }
-    
+
     private void updateMatrixViews() {
         firstMatrixView.setModel(firstMatrix);
         secondMatrixView.setModel(secondMatrix);
         resultMatrixView.setModel(resultMatrix);
+    }
+
+    public void setManager(ControllersManager manager) {
+        this.manager = manager;
     }
 }

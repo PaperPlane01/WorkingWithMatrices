@@ -6,10 +6,12 @@
             <file>file:/D:/MyProjects/WorkingWithMatrix/src/views/MatrixInputView.java</file>
             <file>file:/D:/MyProjects/WorkingWithMatrix/src/views/MatricesMultiplicationView.java</file>
             <file>file:/D:/MyProjects/WorkingWithMatrix/src/models/Matrix.java</file>
+            <file>file:/D:/MyProjects/WorkingWithMatrix/src/controllers/ControllersManager.java</file>
             <file>file:/D:/MyProjects/WorkingWithMatrix/src/models/MatrixFactory.java</file>
             <file>file:/D:/MyProjects/WorkingWithMatrix/src/models/MatrixActions.java</file>
             <file>file:/D:/MyProjects/WorkingWithMatrix/src/views/MatrixView.java</file>
             <file>file:/D:/MyProjects/WorkingWithMatrix/src/app/Runner.java</file>
+            <file>file:/D:/MyProjects/WorkingWithMatrix/src/views/ControllersManagerView.java</file>
             <file>file:/D:/MyProjects/WorkingWithMatrix/src/controllers/MatricesMultiplicationController.java</file>
             <file>file:/D:/MyProjects/WorkingWithMatrix/src/controllers/MatrixInputController.java</file>
         </group>
